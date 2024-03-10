@@ -54,17 +54,33 @@ export const TextForm = (props) => {
         }
         setIsMorseCode(!isMorseCode);
     }
+
+    const HandlecopyText = () => {
+        navigator.clipboard.writeText(text)
+      .then(() => {
+        alert('Text copied to clipboard!');
+      })
+      .catch((error) => {
+        console.error('Error copying text: ', error);
+      });
+    }
+
+    const HandleextraSpace = () => {
+        settext(text.replace(/\s+/g, ' '))
+    }
     return (
         <>
             <div className='container'>
                 <h1>{props.title}</h1>
                 <div className="form-group">
                     {/* <label for="myBox">{props.title}</label> */}
-                    <textarea className="form-control" value={text} onChange={(event) => HandleOnChange(event)} id="myBox" rows="10" ></textarea>
+                    <textarea className="form-control mb-3" value={text} onChange={(event) => HandleOnChange(event)} id="myBox" rows="10" ></textarea>
                 </div>
                 <button className="btn btn-primary mx-2" onClick={() => HandleUpClick()}>To Upper</button>
                 <button className="btn btn-primary mx-2" onClick={() => HandlelowClick()}>To Upper</button>
+                <button className="btn btn-primary mx-2" onClick={() => HandlecopyText()}>Copy Text</button>
                 <button className="btn btn-primary mx-2" onClick={() => HandleclearText()}>Clear Text</button>
+                <button className="btn btn-primary mx-2" onClick={() => HandleextraSpace()}>Remove Extra Space</button>
                 <button className="btn btn-primary mx-2" onClick={() => HandleMorseCode()}>{isMorseCode ? "Switch to Text" : "Morse Code"}</button>
             </div>
             <div className='container my-2'>
