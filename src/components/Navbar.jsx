@@ -1,5 +1,6 @@
 import React from 'react'
 import PropTypes from 'prop-types'
+import { Link } from 'react-router-dom'
 
 export const Navbar = (props) => {
     return (
@@ -12,10 +13,10 @@ export const Navbar = (props) => {
             <div class="collapse navbar-collapse" id="navbarSupportedContent">
                 <ul class="navbar-nav mr-auto">
                     <li class="nav-item active">
-                        <a class="nav-link" href="/">Home</a>
+                        <Link class="nav-link" to="/textform">TextForm</Link>
                     </li>
-                    <li class="nav-item">
-                        <a class="nav-link" href="/">Link</a>
+                    <li class="nav-item active">
+                        <Link class="nav-link" to="/aboutus">About</Link>
                     </li>
                 </ul>
             </div>
